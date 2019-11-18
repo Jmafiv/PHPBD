@@ -19,9 +19,9 @@ echo "<div id=\"contenido\">\n
                     while ($fila=$resultPrincipal->fetch_assoc())
 					{
 						extract($fila);
-						echo "<tr><td>$nombre</td><td><input type='checkbox' name='' value='$id_lenguaje'/></td></tr>";
+						echo "<tr><td>$nombre</td><td><input type='checkbox' name='lenguajes[]' value='$id_lenguaje'/></td></tr>";
 					}
-                    // Aqui va los lenguajes
+
                     echo "</tbody>
                 </table>
               <p>Indica cual es tu afición favorita</p>";
@@ -35,10 +35,17 @@ echo "<div id=\"contenido\">\n
 pulsando con el mouse encima de <br> 
 cada uno de ellos con la tecla<br> 
 <b>Ctrl</b> presionada</i>)</td> 
-<td align='left'> <SELECT MULTIPLE name='' SIZE=6>";
+<td align='left'> <SELECT MULTIPLE name='idiomas[]' SIZE=6>";
 
-	
-	// Aqui va los idiomas
+	$conexion=new mysqli("localhost","root","","ejerClase");
+    $conexion->set_charset("utf8");
+    $sqlPrincipal="SELECT id_idioma,nombre from idiomas";
+    $resultPrincipal=$conexion->query($sqlPrincipal);
+    while ($fila=$resultPrincipal->fetch_assoc())
+	{
+		extract($fila);
+		echo "<option  value='$id_idioma'>$nombre</option>";
+	}
 
 echo "</select> 
 </td>
