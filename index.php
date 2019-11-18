@@ -11,10 +11,14 @@ echo "<div id=\"contenido\">\n
     <td>Nombre Completo</td>
     <td><input type='text' name='nombre'/></td>
 </tr>";
+    //Conexión a la base de datos
     $conexion=new mysqli("localhost","root","","ejerClase");
     $conexion->set_charset("utf8");
+    //Hacemos la Select SQL
     $sqlPrincipal="SELECT id_lenguaje,nombre from lenguajes";
+    //En esta conexion hazme esta consulta:
     $resultPrincipal=$conexion->query($sqlPrincipal);
+    //Metemos en un array los resultados
     while ($fila=$resultPrincipal->fetch_assoc())
 	{
 		extract($fila);
@@ -33,6 +37,7 @@ echo "<table border='0'>
 	<b>Ctrl</b> presionada</i>)</td> 
 	<td align='left'> <SELECT MULTIPLE name='idiomas[]' SIZE=6>";
 
+    //Lo mismo pero para los idiomas
     $sqlPrincipal="SELECT id_idioma,nombre from idiomas";
     $resultPrincipal=$conexion->query($sqlPrincipal);
     while ($fila=$resultPrincipal->fetch_assoc())
