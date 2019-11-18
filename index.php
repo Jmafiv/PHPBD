@@ -14,8 +14,13 @@ echo "<div id=\"contenido\">\n
                     </tr>";
                     $conexion=new mysqli("localhost","root","","ejerClase");
                     $conexion->set_charset("utf8");
-                    $sqlPrincipal="";
-
+                    $sqlPrincipal="SELECT id_lenguaje,nombre from lenguajes";
+                    $resultPrincipal=$conexion->query($sqlPrincipal);
+                    while ($fila=$resultPrincipal->fetch_assoc())
+					{
+						extract($fila);
+						echo "<tr><td>$nombre</td><td><input type='checkbox' name='' value='$id_lenguaje'/></td></tr>";
+					}
                     // Aqui va los lenguajes
                     echo "</tbody>
                 </table>
