@@ -27,26 +27,23 @@ echo "<div id=\"contenido\">\n
                echo "<table border='0'>
                  <tbody>
                     <tr>
-                        
-<td >Habla:<br> 
-(<i>Si habla varios seleccionarlos<br> 
-pulsando con el mouse encima de <br> 
-cada uno de ellos con la tecla<br> 
-<b>Ctrl</b> presionada</i>)</td> 
-<td align='left'> <SELECT MULTIPLE name='idiomas[]' SIZE=6>";
+					<td >Habla:<br> 
+					(<i>Si habla varios seleccionarlos<br> 
+					pulsando con el mouse encima de <br> 
+					cada uno de ellos con la tecla<br> 
+					<b>Ctrl</b> presionada</i>)</td> 
+					<td align='left'> <SELECT MULTIPLE name='idiomas[]' SIZE=6>";
 
-	$conexion=new mysqli("localhost","root","","ejerClase");
-    $conexion->set_charset("utf8");
-    $sqlPrincipal="SELECT id_idioma,nombre from idiomas";
-    $resultPrincipal=$conexion->query($sqlPrincipal);
-    while ($fila=$resultPrincipal->fetch_assoc())
-	{
-		extract($fila);
-		echo "<option  value='$id_idioma'>$nombre</option>";
-	}
+				    $sqlPrincipal="SELECT id_idioma,nombre from idiomas";
+				    $resultPrincipal=$conexion->query($sqlPrincipal);
+				    while ($fila=$resultPrincipal->fetch_assoc())
+					{
+						extract($fila);
+						echo "<option value='$id_idioma'>$nombre</option>";
+					}
 
-echo "</select> 
-</td>
+				echo "</select> 
+				</td>
                     </tr>
                       <tr>
                         
