@@ -10,7 +10,7 @@ echo "<div id=\"contenido\">\n
                  <tbody>
                     <tr>
                         <td>Nombre Completo</td>
-                        <td><input type='text' name='' value='' /></td>
+                        <td><input type='text' name='nombre'/></td>
                     </tr>";
                     $conexion=new mysqli("localhost","root","","ejerClase");
                     $conexion->set_charset("utf8");
@@ -23,10 +23,8 @@ echo "<div id=\"contenido\">\n
 					}
 
                     echo "</tbody>
-                </table>
-              <p>Indica cual es tu afición favorita</p>";
-              
-               echo " <table border='0'>
+                </table>";
+               echo "<table border='0'>
                  <tbody>
                     <tr>
                         
