@@ -11,17 +11,17 @@ echo "<div id=\"contenido\">\n
                     <tr>
                         <td>Nombre Completo</td>
                         <td><input type='text' name='' value='' /></td>
-                    </tr>".
+                    </tr>";
                     $conexion=new mysqli("localhost","root","","ejerClase");
                     $conexion->set_charset("utf8");
                     $sqlPrincipal="";
 
-
-                    ."</tbody>
+                    // Aqui va los lenguajes
+                    echo "</tbody>
                 </table>
               <p>Indica cual es tu afición favorita</p>";
               
-               echo" <table border='0'>
+               echo " <table border='0'>
                  <tbody>
                     <tr>
                         
@@ -30,15 +30,12 @@ echo "<div id=\"contenido\">\n
 pulsando con el mouse encima de <br> 
 cada uno de ellos con la tecla<br> 
 <b>Ctrl</b> presionada</i>)</td> 
-<td align='left'> <SELECT MULTIPLE name='' SIZE=6> 
-<option  value='Castellano'>Castellano</option> 
-<option  value='Francés'>Francés</option> 
-<option  value='Inglés'>Inglés</option> 
-<option  value='Alemán'>Alemán</option> 
-<option  value='Búlgaro'>Ruso</option> 
-<option  value='Chino'>Chino</option>
-<option  value='Otro(s)'>Otros</option>
-</select> 
+<td align='left'> <SELECT MULTIPLE name='' SIZE=6>";
+
+	
+	// Aqui va los idiomas
+
+echo "</select> 
 </td>
                     </tr>
                       <tr>
