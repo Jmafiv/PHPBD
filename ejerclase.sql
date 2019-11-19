@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2019 a las 17:47:22
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 19-11-2019 a las 10:18:32
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ejerclase`
 --
+CREATE DATABASE IF NOT EXISTS `ejerclase` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `ejerclase`;
 
 -- --------------------------------------------------------
 
@@ -28,33 +30,56 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `encuesta`
 --
 
-CREATE TABLE `encuesta` (
-  `num_orden` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+DROP TABLE IF EXISTS `encuesta`;
+CREATE TABLE IF NOT EXISTS `encuesta` (
+  `num_orden` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`num_orden`),
+  UNIQUE KEY `num_orden` (`num_orden`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `encuesta`
+--
+
+TRUNCATE TABLE `encuesta`;
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `habla`
 --
 
-CREATE TABLE `habla` (
+DROP TABLE IF EXISTS `habla`;
+CREATE TABLE IF NOT EXISTS `habla` (
   `num_orden` int(3) NOT NULL,
-  `id_idioma` int(3) NOT NULL
+  `id_idioma` int(3) NOT NULL,
+  PRIMARY KEY (`num_orden`,`id_idioma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `habla`
+--
+
+TRUNCATE TABLE `habla`;
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `idiomas`
 --
 
-CREATE TABLE `idiomas` (
-  `id_idioma` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+DROP TABLE IF EXISTS `idiomas`;
+CREATE TABLE IF NOT EXISTS `idiomas` (
+  `id_idioma` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_idioma`),
+  UNIQUE KEY `id_idioma` (`id_idioma`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `idiomas`
+--
+
+TRUNCATE TABLE `idiomas`;
 --
 -- Volcado de datos para la tabla `idiomas`
 --
@@ -74,11 +99,19 @@ INSERT INTO `idiomas` (`id_idioma`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `lenguajes`
 --
 
-CREATE TABLE `lenguajes` (
-  `id_lenguaje` bigint(20) UNSIGNED NOT NULL,
-  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+DROP TABLE IF EXISTS `lenguajes`;
+CREATE TABLE IF NOT EXISTS `lenguajes` (
+  `id_lenguaje` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_lenguaje`),
+  UNIQUE KEY `id_lenguaje` (`id_lenguaje`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Truncar tablas antes de insertar `lenguajes`
+--
+
+TRUNCATE TABLE `lenguajes`;
 --
 -- Volcado de datos para la tabla `lenguajes`
 --
@@ -96,70 +129,18 @@ INSERT INTO `lenguajes` (`id_lenguaje`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `programa`
 --
 
-CREATE TABLE `programa` (
+DROP TABLE IF EXISTS `programa`;
+CREATE TABLE IF NOT EXISTS `programa` (
   `num_orden` int(3) NOT NULL,
-  `id_lenguaje` int(3) NOT NULL
+  `id_lenguaje` int(3) NOT NULL,
+  PRIMARY KEY (`num_orden`,`id_lenguaje`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Índices para tablas volcadas
+-- Truncar tablas antes de insertar `programa`
 --
 
---
--- Indices de la tabla `encuesta`
---
-ALTER TABLE `encuesta`
-  ADD PRIMARY KEY (`num_orden`),
-  ADD UNIQUE KEY `num_orden` (`num_orden`);
-
---
--- Indices de la tabla `habla`
---
-ALTER TABLE `habla`
-  ADD PRIMARY KEY (`num_orden`,`id_idioma`);
-
---
--- Indices de la tabla `idiomas`
---
-ALTER TABLE `idiomas`
-  ADD PRIMARY KEY (`id_idioma`),
-  ADD UNIQUE KEY `id_idioma` (`id_idioma`);
-
---
--- Indices de la tabla `lenguajes`
---
-ALTER TABLE `lenguajes`
-  ADD PRIMARY KEY (`id_lenguaje`),
-  ADD UNIQUE KEY `id_lenguaje` (`id_lenguaje`);
-
---
--- Indices de la tabla `programa`
---
-ALTER TABLE `programa`
-  ADD PRIMARY KEY (`num_orden`,`id_lenguaje`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `encuesta`
---
-ALTER TABLE `encuesta`
-  MODIFY `num_orden` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `idiomas`
---
-ALTER TABLE `idiomas`
-  MODIFY `id_idioma` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `lenguajes`
---
-ALTER TABLE `lenguajes`
-  MODIFY `id_lenguaje` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
+TRUNCATE TABLE `programa`;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
