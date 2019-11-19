@@ -9,7 +9,7 @@ echo "<div id=\"contenido\">\n
 <tbody>
 <tr>
     <td>Nombre Completo</td>
-    <td><input type='text' name='nombre'/></td>
+    <td><input type='text' name='nombre' required/></td>
 </tr>";
     //Conexión a la base de datos
     $conexion=new mysqli("localhost","root","","ejerClase");
